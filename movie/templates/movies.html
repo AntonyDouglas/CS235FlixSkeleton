@@ -1,0 +1,78 @@
+{% include 'layout.html' %}
+
+{% block content %}
+
+<main id = "main">
+    <h1 class="center">Browse Movies</h1>
+    <nav style="clear:both">
+            <div style="float:left">
+                {% if first_page_url is not none %}
+                    <button class="btn-general" onclick="location.href='{{first_page_url}}'">First</button>
+                {% else %}
+                    <button class="btn-general-disabled" disabled>First</button>
+                {% endif %}
+                {% if prev_page_url is not none %}
+                    <button class="btn-general" onclick="location.href='{{prev_page_url}}'">Previous</button>
+                {% else %}
+                    <button class="btn-general-disabled" disabled>Previous</button>
+                {% endif %}
+            </div>
+            <div style="float:right">
+                {% if next_page_url is not none %}
+                    <button class="btn-general" onclick="location.href='{{next_page_url}}'">Next</button>
+                {% else %}
+                    <button class="btn-general-disabled" disabled>Next</button>
+                {% endif %}
+                {% if last_page_url is not none %}
+                    <button class="btn-general" onclick="location.href='{{last_page_url}}'">Last</button>
+                {% else %}
+                    <button class="btn-general-disabled" disabled>Last</button>
+                {% endif %}
+            </div>
+        </nav>
+<br>
+</br>
+
+
+    {% for movie in movie_lst %}
+        <h2>{{movie.title}}, {{movie.year}}</h2>
+        {% if movie.description is not none %}
+            {{movie.description}}
+        {% endif %}
+        {% if movie.director is not none %}
+    <br></br>
+    <b>Director:</b> {{movie.director.director_full_name}}
+        {% endif %}
+    {% endfor %}
+
+    <br></br>
+    <nav style="clear:both">
+            <div style="float:left">
+                {% if first_page_url is not none %}
+                    <button class="btn-general" onclick="location.href='{{first_page_url}}'">First</button>
+                {% else %}
+                    <button class="btn-general-disabled" disabled>First</button>
+                {% endif %}
+                {% if prev_page_url is not none %}
+                    <button class="btn-general" onclick="location.href='{{prev_page_url}}'">Previous</button>
+                {% else %}
+                    <button class="btn-general-disabled" disabled>Previous</button>
+                {% endif %}
+            </div>
+            <div style="float:right">
+                {% if next_page_url is not none %}
+                    <button class="btn-general" onclick="location.href='{{next_page_url}}'">Next</button>
+                {% else %}
+                    <button class="btn-general-disabled" disabled>Next</button>
+                {% endif %}
+                {% if last_page_url is not none %}
+                    <button class="btn-general" onclick="location.href='{{last_page_url}}'">Last</button>
+                {% else %}
+                    <button class="btn-general-disabled" disabled>Last</button>
+                {% endif %}
+            </div>
+        </nav>
+        <br></br>
+
+</main>
+{% endblock %}
